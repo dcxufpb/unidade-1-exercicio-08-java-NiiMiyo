@@ -180,11 +180,11 @@ public class TestCupomFiscal {
 	public void validarCnpj() {
 		Loja cnpjVazio = new Loja(NOME_LOJA, LOGRADOURO, NUMERO, COMPLEMENTO, BAIRRO, MUNICIPIO, ESTADO, CEP, TELEFONE,
 				OBSERVACAO, "", INSCRICAO_ESTADUAL);
-		verificarCampoObrigatorio("O campo cnpj da loja é obrigatório", cnpjVazio);
+		verificarCampoObrigatorio("O campo CNPJ da loja é obrigatório", cnpjVazio);
 
 		Loja cnpjNulo = new Loja(NOME_LOJA, LOGRADOURO, NUMERO, COMPLEMENTO, BAIRRO, MUNICIPIO, ESTADO, CEP, TELEFONE,
 				OBSERVACAO, null, INSCRICAO_ESTADUAL);
-		verificarCampoObrigatorio("O campo cnpj da loja é obrigatório", cnpjNulo);
+		verificarCampoObrigatorio("O campo CNPJ da loja é obrigatório", cnpjNulo);
 	}
 
 	@Test
@@ -215,24 +215,32 @@ public class TestCupomFiscal {
 	@Test
 	public void exercicio02_Customizado() {
 		// Defina seus próprios valores para as variáveis a seguir
-		String nomeLoja = "";
-		String logradouro = "";
-		int numero = 0;
-		String complemento = "";
-		String bairro = "";
-		String municipio = "";
-		String estado = "";
-		String cep = "";
-		String telefone = "";
-		String observacao = "";
-		String cnpj = "";
-		String inscricaoEstadual = "";
+		String nomeLoja = "Top 10 nomes de lojas";
+		String logradouro = "Rua Tchurusbango Tchurusmago";
+		int numero = 13;
+		String complemento = "Do lado da casa vizinha";
+		String bairro = "Bairro do Limoeiro";
+		String municipio = "São Paulo";
+		String estado = "SP";
+		String cep = "08090-284";
+		String telefone = "(11) 4002-8922";
+		String observacao = "Entre o Campinho e a Lua de Baixo";
+		String cnpj = "43.745.249/0001-39";
+		String inscricaoEstadual = "564.213.199.866";
+
+		String expected = "Top 10 nomes de lojas" + BREAK;
+		expected += "Rua Tchurusbango Tchurusmago, 13 Do lado da casa vizinha" + BREAK;
+		expected += "Bairro do Limoeiro - São Paulo - SP" + BREAK;
+		expected += "CEP:08090-284 Tel (11) 4002-8922" + BREAK;
+		expected += "Entre o Campinho e a Lua de Baixo" + BREAK;
+		expected += "CNPJ: 43.745.249/0001-39" + BREAK;
+		expected += "IE: 564.213.199.866";
 
 		Loja lojaCustomizada = new Loja(nomeLoja, logradouro, numero, complemento, bairro, municipio, estado, cep,
 				telefone, observacao, cnpj, inscricaoEstadual);
 
 		// E atualize o texto esperado abaixo
-		rodarTestarRetorno("" + BREAK, lojaCustomizada);
+		rodarTestarRetorno(expected + BREAK, lojaCustomizada);
 	}
 
 	private void rodarTestarRetorno(String expected, Loja loja) {
