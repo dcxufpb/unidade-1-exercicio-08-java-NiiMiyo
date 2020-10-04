@@ -3,7 +3,7 @@
     {
       "name": "Teste",
       "setup": "",
-      "run": "gradle test",
+      "run": "mvn test",
       "input": "",
       "output": "",
       "comparison": "included",
